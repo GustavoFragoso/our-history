@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Namorada ❤️</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Estrutura principal */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #8a2be2; /* Roxo */
+            font-size: 2rem;
+        }
+
+        /* Texto principal acima do carrossel */
+        .main-text {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+            line-height: 1.6;
+            color: #555;
+            font-size: 1.1rem;
+            padding: 0 15px;
+        }
+
+        /* Estilos do carrossel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 80px; /* Reduzido para aproximar o texto */
+        }
+
+        .swiper {
+            width: 100%;
+            height: 450px;
+            margin-bottom: 20px; /* Reduzido para aproximar o texto */
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            transition: all 0.5s;
+            opacity: 0.5;
+            transform: scale(0.8);
+            width: 300px; /* Largura fixa para os slides */
+            position: relative;
+            cursor: pointer; /* Indicar que é clicável */
+        }
+
+        .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Efeito de hover nos slides */
+        .swiper-slide:hover {
+            transform: scale(0.85);
+        }
+
+        .swiper-slide-active:hover {
+            transform: scale(1.05);
+        }
+
+        /* Área para o texto do slide atual */
+        .current-slide-text {
+            position: relative; /* Alterado de absolute para relative */
+            text-align: center;
+            padding: 12px;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto 30px; /* Centralizado com margem inferior */
+            transition: opacity 0.3s ease;
+        }
+
+        /* Botões de navegação abaixo */
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: auto;
+            bottom: 0;
+            color: #8a2be2; /* Roxo */
+            background: rgba(255, 255, 255, 0.8);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-button-next {
+            right: 50%;
+            margin-right: -60px;
+        }
+
+        .swiper-button-prev {
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Paginação */
+        .swiper-pagination {
+            bottom: 10px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #8a2be2; /* Roxo */
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #8a2be2; /* Roxo */
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 768px) {
+            .swiper {
+                height: 350px;
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .main-text {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+
+            .swiper-slide {
+                width: 250px;
+            }
+
+            .current-slide-text {
+                font-size: 0.9rem;
+                padding: 10px;
+                max-width: 90%;
+                margin-bottom: 25px;
+            }
+
+            .carousel-container {
+                padding-bottom: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .swiper {
+                height: 300px;
+            }
+
+            .swiper-slide {
+                width: 220px;
+            }
+
+            .carousel-container {
+                padding-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Para Você, Meu Amor ❤️</h1>
+    
+    <!-- Texto principal acima do carrossel -->
+    <p class="main-text">
+        Cada momento ao seu lado é especial. Estas fotos contam um pouco da nossa história, 
+        dos momentos que compartilhamos e das memórias que construímos juntos. 
+        Cada imagem carrega um sentimento, uma lembrança que guardo com carinho no meu coração.
+    </p>
+
+    <!-- Carrossel de Fotos -->
+    <div class="carousel-container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Cada imagem precisa estar dentro de um div com classe swiper-slide -->
+                <div class="swiper-slide" data-caption="Nosso primeiro encontro, quando percebi que você era especial.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.08 (1).jpeg" alt="Foto 1">
+                </div>
+                <div class="swiper-slide" data-caption="Aquele dia no parque, quando rimos até não poder mais.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.08.jpeg" alt="Foto 2">
+                </div>
+                <div class="swiper-slide" data-caption="Nossa primeira viagem juntos, descobrindo novos lugares.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09 (1).jpeg" alt="Foto 3">
+                </div>   
+                <div class="swiper-slide" data-caption="Aquele pôr do sol que assistimos abraçados.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09 (2).jpeg" alt="Foto 4">
+                </div>
+                <div class="swiper-slide" data-caption="Seu sorriso ilumina meus dias, mesmo nos momentos difíceis.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09 (3).jpeg" alt="Foto 5">
+                </div>
+                <div class="swiper-slide" data-caption="Celebrando mais um ano juntos, construindo nossa história.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09.jpeg" alt="Foto 6">
+                </div>      
+                <div class="swiper-slide" data-caption="Momentos simples que se tornam especiais ao seu lado.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.10.jpeg" alt="Foto 7">
+                </div>
+                <div class="swiper-slide" data-caption="Cada abraço seu me faz sentir em casa, seguro e amado.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.11.jpeg" alt="Foto 8">
+                </div>
+                <div class="swiper-slide" data-caption="Você é meu presente de todos os dias, meu amor eterno.">
+                    <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.12.jpeg" alt="Foto 9">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <!-- Texto do slide atual (fora do swiper para melhor posicionamento) -->
+        <div class="current-slide-text" id="currentSlideText"></div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Carregue o Swiper JS antes de inicializá-lo -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Inicialize o Swiper após o carregamento da página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elemento para mostrar o texto do slide atual
+            const currentSlideText = document.getElementById('currentSlideText');
+            
+            const swiper = new Swiper('.mySwiper', {
+                // Mostrar múltiplos slides
+                slidesPerView: 3, // Mostra 3 slides (1 central e 2 laterais)
+                centeredSlides: true,
+                spaceBetween: 15, // Espaço menor entre os slides
+                
+                // Transição mais lenta
+                speed: 1500, // Tempo da transição em milissegundos (1.5 segundos)
+                
+                // Efeito de transição suave
+                effect: 'coverflow',
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 150,
+                    modifier: 1.5,
+                    slideShadows: false,
+                },
+                
+                loop: true,
+                autoplay: {
+                    delay: 4000, // Tempo entre transições (4 segundos)
+                    disableOnInteraction: false, // Continua o autoplay mesmo após interação
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                // Tornar responsivo
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1.5, // Em telas muito pequenas
+                        spaceBetween: 10,
+                    },
+                    480: {
+                        slidesPerView: 2, // Em telas pequenas
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        slidesPerView: 2.5, // Em tablets
+                        spaceBetween: 15,
+                    },
+                    1024: {
+                        slidesPerView: 3, // Em desktops
+                        spaceBetween: 15,
+                    },
+                },
+                on: {
+                    init: function() {
+                        // Mostrar o texto do slide inicial
+                        updateSlideText(this);
+                    },
+                    slideChange: function() {
+                        // Atualizar o texto quando o slide mudar
+                        updateSlideText(this);
+                    }
+                }
+            });
+            
+            // Função para atualizar o texto do slide atual
+            function updateSlideText(swiper) {
+                // Obter o slide ativo real (considerando os clones do loop)
+                const realIndex = swiper.realIndex;
+                const slides = document.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
+                
+                if (slides[realIndex]) {
+                    const caption = slides[realIndex].getAttribute('data-caption');
+                    currentSlideText.textContent = caption;
+                    
+                    // Animação simples para o texto
+                    currentSlideText.style.opacity = 0;
+                    setTimeout(() => {
+                        currentSlideText.style.opacity = 1;
+                    }, 300);
+                }
+            }
+            
+            // Adicionar evento de clique nos slides para navegar até eles
+            const slides = document.querySelectorAll('.swiper-slide');
+            slides.forEach(slide => {
+                slide.addEventListener('click', function() {
+                    // Encontrar o índice do slide clicado
+                    const clickedIndex = Array.from(slides).indexOf(this);
+                    // Navegar até o slide clicado
+                    swiper.slideTo(clickedIndex);
+                });
+                
+                // Pausar o autoplay quando segurar o mouse (mousedown)
+                slide.addEventListener('mousedown', function() {
+                    swiper.autoplay.stop();
+                });
+                
+                // Pausar o autoplay quando tocar (touchstart) - para dispositivos móveis
+                slide.addEventListener('touchstart', function() {
+                    swiper.autoplay.stop();
+                });
+                
+                // Retomar o autoplay quando soltar o mouse (mouseup)
+                slide.addEventListener('mouseup', function() {
+                    swiper.autoplay.start();
+                });
+                
+                // Retomar o autoplay quando soltar o toque (touchend) - para dispositivos móveis
+                slide.addEventListener('touchend', function() {
+                    swiper.autoplay.start();
+                });
+                
+                // Retomar o autoplay se o mouse sair do slide enquanto estiver pressionado
+                slide.addEventListener('mouseleave', function() {
+                    swiper.autoplay.start();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
