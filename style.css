@@ -48,3 +48,22 @@ button {
 button:hover {
     background: #0056b3;
 }
+/* Estilos para o player do Spotify */
+.spotify-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    transform: scale(0.7);
+    transform-origin: bottom right;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.spotify-player:hover {
+    opacity: 1;
+    transform: scale(0.8);
+}

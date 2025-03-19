@@ -6,13 +6,15 @@
     <title>Para Minha Namorada ❤️</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Importando a fonte Brush Script MT ou alternativas -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap">
     <style>
         /* Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Satisfy', cursive; /* Fonte script para todos os elementos */
         }
 
         /* Estrutura principal */
@@ -22,15 +24,16 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            background-color: #f4f4f4;
-            padding: 20px 10px;
+            background-color: #f0e6ff; /* Roxo bem claro */
+            padding: 20px 10px 120px; /* Aumentado o padding inferior para o player */
         }
 
         h1 {
             text-align: center;
             margin-bottom: 10px;
-            color: #8a2be2; /* Roxo */
-            font-size: 2rem;
+            color: #000000; /* Preto */
+            font-size: 2.2rem;
+            font-weight: bold;
         }
 
         /* Texto principal acima do carrossel */
@@ -39,8 +42,8 @@
             margin-bottom: 30px;
             max-width: 800px;
             line-height: 1.6;
-            color: #555;
-            font-size: 1.1rem;
+            color: #333;
+            font-size: 1.3rem;
             padding: 0 15px;
         }
 
@@ -50,7 +53,7 @@
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
-            padding-bottom: 80px; /* Reduzido para aproximar o texto */
+            padding-bottom: 40px; /* Reduzido já que removemos os botões */
         }
 
         .swiper {
@@ -66,7 +69,7 @@
             align-items: center;
             background: transparent;
             transition: all 0.5s;
-            opacity: 0.5;
+            opacity: 0.7; /* Aumentado de 0.5 para 0.7 - menos transparente */
             transform: scale(0.8);
             width: 300px; /* Largura fixa para os slides */
             position: relative;
@@ -90,10 +93,12 @@
         /* Efeito de hover nos slides */
         .swiper-slide:hover {
             transform: scale(0.85);
+            opacity: 0.85; /* Aumentar opacidade no hover */
         }
 
         .swiper-slide-active:hover {
             transform: scale(1.05);
+            opacity: 1; /* Slide ativo sempre com opacidade total */
         }
 
         /* Área para o texto do slide atual */
@@ -101,7 +106,7 @@
             position: relative; /* Alterado de absolute para relative */
             text-align: center;
             padding: 12px;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: #333;
             font-weight: 500;
             background-color: rgba(255, 255, 255, 0.9);
@@ -110,37 +115,13 @@
             max-width: 600px;
             margin: 0 auto 30px; /* Centralizado com margem inferior */
             transition: opacity 0.3s ease;
+            min-height: 60px; /* Altura mínima para evitar saltos */
         }
 
-        /* Botões de navegação abaixo */
+        /* Escondendo os botões de navegação */
         .swiper-button-next,
         .swiper-button-prev {
-            top: auto;
-            bottom: 0;
-            color: #8a2be2; /* Roxo */
-            background: rgba(255, 255, 255, 0.8);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .swiper-button-next {
-            right: 50%;
-            margin-right: -60px;
-        }
-
-        .swiper-button-prev {
-            left: 50%;
-            margin-left: -60px;
-        }
-
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 18px;
-            font-weight: bold;
+            display: none !important;
         }
 
         /* Paginação */
@@ -160,6 +141,57 @@
             background: #8a2be2; /* Roxo */
         }
 
+        /* Estilos para o player do Spotify - REPOSICIONADO */
+        .spotify-player-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 0 15px;
+        }
+
+        .spotify-player {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .spotify-player iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+        }
+
+        /* Botão para iniciar música */
+        .music-button {
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-button:hover {
+            background-color: #7525c9;
+            transform: scale(1.05);
+        }
+
+        .music-button svg {
+            margin-right: 8px;
+        }
+
         /* Responsividade para celulares */
         @media (max-width: 768px) {
             .swiper {
@@ -168,12 +200,12 @@
             }
 
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 margin-bottom: 10px;
             }
 
             .main-text {
-                font-size: 0.95rem;
+                font-size: 1.1rem;
                 margin-bottom: 20px;
             }
 
@@ -182,14 +214,18 @@
             }
 
             .current-slide-text {
-                font-size: 0.9rem;
+                font-size: 1.1rem;
                 padding: 10px;
                 max-width: 90%;
                 margin-bottom: 25px;
             }
 
             .carousel-container {
-                padding-bottom: 70px;
+                padding-bottom: 40px;
+            }
+            
+            body {
+                padding-bottom: 100px; /* Ajustado para dispositivos móveis */
             }
         }
 
@@ -203,13 +239,17 @@
             }
 
             .carousel-container {
-                padding-bottom: 60px;
+                padding-bottom: 40px;
+            }
+            
+            .spotify-player {
+                max-width: 350px;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Para Você, Meu Amor ❤️</h1>
+    <h1>Para o Amor da minha vida Hellen ❤️</h1>
     
     <!-- Texto principal acima do carrossel -->
     <p class="main-text">
@@ -223,31 +263,31 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <!-- Cada imagem precisa estar dentro de um div com classe swiper-slide -->
-                <div class="swiper-slide" data-caption="Nosso primeiro encontro, quando percebi que você era especial.">
+                <div class="swiper-slide" data-index="0">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.08 (1).jpeg" alt="Foto 1">
                 </div>
-                <div class="swiper-slide" data-caption="Aquele dia no parque, quando rimos até não poder mais.">
+                <div class="swiper-slide" data-index="1">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.08.jpeg" alt="Foto 2">
                 </div>
-                <div class="swiper-slide" data-caption="Nossa primeira viagem juntos, descobrindo novos lugares.">
+                <div class="swiper-slide" data-index="2">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09 (1).jpeg" alt="Foto 3">
                 </div>   
-                <div class="swiper-slide" data-caption="Aquele pôr do sol que assistimos abraçados.">
+                <div class="swiper-slide" data-index="3">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09 (2).jpeg" alt="Foto 4">
                 </div>
-                <div class="swiper-slide" data-caption="Seu sorriso ilumina meus dias, mesmo nos momentos difíceis.">
+                <div class="swiper-slide" data-index="4">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09 (3).jpeg" alt="Foto 5">
                 </div>
-                <div class="swiper-slide" data-caption="Celebrando mais um ano juntos, construindo nossa história.">
+                <div class="swiper-slide" data-index="5">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.09.jpeg" alt="Foto 6">
                 </div>      
-                <div class="swiper-slide" data-caption="Momentos simples que se tornam especiais ao seu lado.">
+                <div class="swiper-slide" data-index="6">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.10.jpeg" alt="Foto 7">
                 </div>
-                <div class="swiper-slide" data-caption="Cada abraço seu me faz sentir em casa, seguro e amado.">
+                <div class="swiper-slide" data-index="7">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.11.jpeg" alt="Foto 8">
                 </div>
-                <div class="swiper-slide" data-caption="Você é meu presente de todos os dias, meu amor eterno.">
+                <div class="swiper-slide" data-index="8">
                     <img src="Fotos/WhatsApp Image 2025-03-19 at 10.19.12.jpeg" alt="Foto 9">
                 </div>
             </div>
@@ -256,9 +296,19 @@
         
         <!-- Texto do slide atual (fora do swiper para melhor posicionamento) -->
         <div class="current-slide-text" id="currentSlideText"></div>
-        
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Player do Spotify com botão para iniciar música -->
+    <div class="spotify-player-container">
+        <button class="music-button" id="playMusicBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/>
+            </svg>
+            Iniciar Música
+        </button>
+        <div class="spotify-player" id="spotifyPlayerContainer">
+            <!-- O iframe será inserido via JavaScript quando o botão for clicado -->
+        </div>
     </div>
 
     <!-- Carregue o Swiper JS antes de inicializá-lo -->
@@ -268,6 +318,38 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Elemento para mostrar o texto do slide atual
             const currentSlideText = document.getElementById('currentSlideText');
+            const playMusicBtn = document.getElementById('playMusicBtn');
+            const spotifyPlayerContainer = document.getElementById('spotifyPlayerContainer');
+            
+            // Configurar o botão de música
+            playMusicBtn.addEventListener('click', function() {
+                // Criar o iframe com autoplay=1
+                spotifyPlayerContainer.innerHTML = `
+                    <iframe 
+                        src="https://open.spotify.com/embed/playlist/7LwMZWat3d0WL8I1Pjfcbz?autoplay=1" 
+                        height="80" 
+                        allowtransparency="true" 
+                        allow="encrypted-media; autoplay" 
+                        frameborder="0">
+                    </iframe>
+                `;
+                
+                // Esconder o botão após clicar
+                playMusicBtn.style.display = 'none';
+            });
+            
+            // Array com os textos específicos para cada foto
+            const slideCaptions = [
+                "Cada segundo ao seu lado me faz amar você mais.",
+                "Nossa primeira foto juntos foi nesse encontro que eu descobri que você é uma mulher certa para mim",
+                "Eu nunca imaginei que alguém pudesse me fazer sentir tão feliz, até você chegar na minha vida.",
+                "Não importa o que aconteça, sempre vou estar ao seu lado, te amando e te apoiando.",
+                "Seu sorriso ilumina meus dias, mesmo nos momentos difíceis você me traz alegria",
+                "Os nossos encontros ao acaso me fazem acreditar que o universo queria nos juntar.",
+                "Momentos simples que se tornam especiais ao seu lado, cada minuto é precioso",
+                "Cada abraço seu me faz sentir em casa, seguro e amado como nunca antes",
+                "Você é meu presente de todos os dias, meu amor eterno, minha companheira de vida"
+            ];
             
             const swiper = new Swiper('.mySwiper', {
                 // Mostrar múltiplos slides
@@ -296,10 +378,6 @@
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
                 },
                 // Tornar responsivo
                 breakpoints: {
@@ -334,17 +412,18 @@
             
             // Função para atualizar o texto do slide atual
             function updateSlideText(swiper) {
-                // Obter o slide ativo real (considerando os clones do loop)
+                // Obter o índice real do slide ativo (considerando o loop)
                 const realIndex = swiper.realIndex;
-                const slides = document.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
                 
-                if (slides[realIndex]) {
-                    const caption = slides[realIndex].getAttribute('data-caption');
-                    currentSlideText.textContent = caption;
+                // Usar o índice para obter o texto correspondente do array
+                if (realIndex >= 0 && realIndex < slideCaptions.length) {
+                    const caption = slideCaptions[realIndex];
                     
-                    // Animação simples para o texto
+                    // Animação de fade para o texto
                     currentSlideText.style.opacity = 0;
+                    
                     setTimeout(() => {
+                        currentSlideText.textContent = caption;
                         currentSlideText.style.opacity = 1;
                     }, 300);
                 }
@@ -354,10 +433,12 @@
             const slides = document.querySelectorAll('.swiper-slide');
             slides.forEach(slide => {
                 slide.addEventListener('click', function() {
-                    // Encontrar o índice do slide clicado
-                    const clickedIndex = Array.from(slides).indexOf(this);
-                    // Navegar até o slide clicado
-                    swiper.slideTo(clickedIndex);
+                    // Obter o índice do slide a partir do atributo data-index
+                    const index = parseInt(this.getAttribute('data-index'));
+                    if (!isNaN(index)) {
+                        // Navegar até o slide com esse índice
+                        swiper.slideToLoop(index);
+                    }
                 });
                 
                 // Pausar o autoplay quando segurar o mouse (mousedown)
@@ -385,6 +466,14 @@
                     swiper.autoplay.start();
                 });
             });
+            
+            // Simular um clique automático no botão de música após 2 segundos
+            // Isso não vai funcionar em todos os navegadores devido às políticas de segurança,
+            // mas podemos tentar
+            setTimeout(function() {
+                // Tentar iniciar a música automaticamente
+                playMusicBtn.click();
+            }, 2000);
         });
     </script>
 </body>
